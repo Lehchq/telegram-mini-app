@@ -1,21 +1,31 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Telegram Mini App</title>
+  <title>Telegram Mini App Form</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 2em; text-align: center; }
+    input, button { font-size: 1em; padding: 0.5em; margin-top: 1em; width: 80%; max-width: 300px; }
+  </style>
 </head>
 <body>
-  <h1>Привет, Telegram!</h1>
-  <button onclick="showAlert()">Нажми меня</button>
+  <h2>Введите сообщение</h2>
+  <input type="text" id="userInput" placeholder="Например, Привет боту!" />
+  <button onclick="sendData()">Отправить боту</button>
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand(); // раскрыть на весь экран
+    tg.ready();
+    tg.expand();
 
-    function showAlert() {
-      tg.showAlert("Кнопка нажата!");
+    function sendData() {
+      const message = document.getElementById("userInput").value;
+      if (message.trim() === "") {
+        tg.showAlert("Введите текст!");
+        return;
+      }
+      tg.sendData(message); // Отправка данных в бот
     }
   </script>
 </body>
