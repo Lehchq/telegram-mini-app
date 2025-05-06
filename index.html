@@ -1,0 +1,22 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Telegram Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <h1>Привет, Telegram!</h1>
+  <button onclick="showAlert()">Нажми меня</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // раскрыть на весь экран
+
+    function showAlert() {
+      tg.showAlert("Кнопка нажата!");
+    }
+  </script>
+</body>
+</html>
